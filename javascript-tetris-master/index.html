@@ -241,7 +241,7 @@
 
     function setVisualScore(n)      { vscore = n || score; invalidateScore(); }
     function setScore(n)            { score = n; setVisualScore(n);  }
-    function addScore(n)            { score = score + n;   }
+    function addScore(n)            { score = score + n; if (score>0) { speed.start=0.6-score/10000; if(speed.start<0) speed.start=0.1;  }}
     function clearScore()           { setScore(0); }
     function clearRows()            { setRows(0); }
     function setRows(n)             { rows = n; step = Math.max(speed.min, speed.start - (speed.decrement*rows)); invalidateRows(); }
